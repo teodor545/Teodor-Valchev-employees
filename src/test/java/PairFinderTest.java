@@ -7,12 +7,6 @@ import java.util.List;
 import static junit.framework.Assert.assertEquals;
 import org.junit.Test;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 public class PairFinderTest {
     
     private final PairFinder pf = new PairFinder();

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.interview.task.ui;
 
 import com.interview.task.pair.finder.PairFinder;
@@ -149,13 +145,6 @@ public class MainPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_selectFileButtonActionPerformed
 
     private void findPairsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findPairsButtonActionPerformed
-
-        DefaultTableModel model = new DefaultTableModel();
-        
-        model.addColumn("Employee ID #1");
-        model.addColumn("Employee ID #2");
-        model.addColumn("Project ID");
-        model.addColumn("Days worked");
         
         PairFinder pf = new PairFinder();
         
@@ -165,11 +154,18 @@ public class MainPanel extends javax.swing.JFrame {
           if (pairs.isEmpty()) {
              JOptionPane.showMessageDialog(null, "No pairs found", "Info", JOptionPane.WARNING_MESSAGE);
           } else {
-            for (EmployeePair rp: pairs) {
-              Object[] row = {rp.getEmployeeId1(), rp.getEmployeeId2(), rp.getProjectId(), rp.getOverlapDays()};
-              model.addRow(row);     
-            }
-            resultTable.setModel(model);
+                DefaultTableModel model = new DefaultTableModel();
+        
+                model.addColumn("Employee ID #1");
+                model.addColumn("Employee ID #2");
+                model.addColumn("Project ID");
+                model.addColumn("Days worked");
+              
+                for (EmployeePair rp: pairs) {
+                   Object[] row = {rp.getEmployeeId1(), rp.getEmployeeId2(), rp.getProjectId(), rp.getOverlapDays()};
+                   model.addRow(row);     
+                }
+                resultTable.setModel(model);
           }
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
