@@ -1,7 +1,7 @@
 package com.interview.task.pair.finder;
 
 public class EmployeePair {
-    
+
     private int employeeId1;
     private int employeeId2;
     private int projectId;
@@ -49,5 +49,5 @@ public class EmployeePair {
     @Override
     public String toString() {
         return employeeId1 + "," + employeeId2 + "," + projectId + "," + overlapDays;
-    }    
+    }
 }

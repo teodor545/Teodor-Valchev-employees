@@ -8,16 +8,18 @@ import java.util.Map;
 
 public class DateConverter extends AbstractBeanField {
 
-    private static final Map<String, String> DATE_FORMAT_TYPES = new HashMap<>() {{
-        put("^\\d{8}$", "yyyyMMdd");
-        put("^\\d{1,2}:\\d{1,2}:\\d{4}$", "dd:MM:yyyy");
-        put("^\\d{1,2}-\\d{1,2}-\\d{4}$", "dd-MM-yyyy");
-        put("^\\d{4}-\\d{1,2}-\\d{1,2}$", "yyyy-MM-dd");
-        put("^\\d{1,2}/\\d{1,2}/\\d{4}$", "MM/dd/yyyy");
-        put("^\\d{4}/\\d{1,2}/\\d{1,2}$", "yyyy/MM/dd");
-        put("^\\d{1,2}\\s[a-z]{3}\\s\\d{4}$", "dd MMM yyyy");
-        put("^\\d{1,2}\\s[a-z]{4,}\\s\\d{4}$", "dd MMMM yyyy");
-    }};
+    private static final Map<String, String> DATE_FORMAT_TYPES = new HashMap<>() {
+        {
+            put("^\\d{8}$", "yyyyMMdd");
+            put("^\\d{1,2}:\\d{1,2}:\\d{4}$", "dd:MM:yyyy");
+            put("^\\d{1,2}-\\d{1,2}-\\d{4}$", "dd-MM-yyyy");
+            put("^\\d{4}-\\d{1,2}-\\d{1,2}$", "yyyy-MM-dd");
+            put("^\\d{1,2}/\\d{1,2}/\\d{4}$", "MM/dd/yyyy");
+            put("^\\d{4}/\\d{1,2}/\\d{1,2}$", "yyyy/MM/dd");
+            put("^\\d{1,2}\\s[a-z]{3}\\s\\d{4}$", "dd MMM yyyy");
+            put("^\\d{1,2}\\s[a-z]{4,}\\s\\d{4}$", "dd MMMM yyyy");
+        }
+    };
 
     @Override
     protected Object convert(String dateString) {

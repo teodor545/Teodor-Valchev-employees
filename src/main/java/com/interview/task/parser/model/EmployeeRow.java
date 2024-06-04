@@ -6,7 +6,7 @@ import com.opencsv.bean.CsvCustomBindByName;
 import java.time.LocalDate;
 
 public class EmployeeRow {
-    
+
     @CsvBindByName(column = "EmpID")
     private int employeeId;
 

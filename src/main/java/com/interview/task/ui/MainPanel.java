@@ -11,9 +11,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class MainPanel extends javax.swing.JFrame {
 
-    
     private File selectedFile;
-    
+
     /**
      * Creates new form MainPanel
      */
@@ -133,41 +132,41 @@ public class MainPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_filePathFieldActionPerformed
 
     private void selectFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFileButtonActionPerformed
-          JFileChooser fc = new JFileChooser();
-          FileNameExtensionFilter filter = new FileNameExtensionFilter("csv","csv");
-          fc.setFileFilter(filter);
-          int returnVal = fc.showOpenDialog(this);
-          if(returnVal == JFileChooser.APPROVE_OPTION) {
-              File csv = fc.getSelectedFile();
-              filePathField.setText(csv.getAbsolutePath());
-              selectedFile = csv;
-          }
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("csv", "csv");
+        fc.setFileFilter(filter);
+        int returnVal = fc.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File csv = fc.getSelectedFile();
+            filePathField.setText(csv.getAbsolutePath());
+            selectedFile = csv;
+        }
     }//GEN-LAST:event_selectFileButtonActionPerformed
 
     private void findPairsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findPairsButtonActionPerformed
-        
+
         PairFinder pf = new PairFinder();
-        
+
         try {
-          List<EmployeePair> pairs = pf.determineEmployeePairs(selectedFile.toPath());
-       
-          if (pairs.isEmpty()) {
-             JOptionPane.showMessageDialog(null, "No pairs found", "Info", JOptionPane.WARNING_MESSAGE);
-          } else {
+            List<EmployeePair> pairs = pf.determineEmployeePairs(selectedFile.toPath());
+
+            if (pairs.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No pairs found", "Info", JOptionPane.WARNING_MESSAGE);
+            } else {
                 DefaultTableModel model = new DefaultTableModel();
-        
+
                 model.addColumn("Employee ID #1");
                 model.addColumn("Employee ID #2");
                 model.addColumn("Project ID");
                 model.addColumn("Days worked");
-              
-                for (EmployeePair rp: pairs) {
-                   Object[] row = {rp.getEmployeeId1(), rp.getEmployeeId2(), rp.getProjectId(), rp.getOverlapDays()};
-                   model.addRow(row);     
+
+                for (EmployeePair rp : pairs) {
+                    Object[] row = {rp.getEmployeeId1(), rp.getEmployeeId2(), rp.getProjectId(), rp.getOverlapDays()};
+                    model.addRow(row);
                 }
                 resultTable.setModel(model);
-          }
-        } catch(Exception ex) {
+            }
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_findPairsButtonActionPerformed
